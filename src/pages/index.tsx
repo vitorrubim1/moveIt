@@ -2,6 +2,7 @@ import Head from "next/head";
 
 import { CompletedChallenges } from "../components/CompletedChallenges";
 import { ExperienceBar } from "../components/ExperienceBar";
+import { ChallengeBox } from "../components/ChallengeBox";
 import { CountDown } from "../components/CountDown";
 import { Profile } from "../components/Profile";
 
@@ -23,7 +24,9 @@ export default function Home() {
           <CountDown />
         </div>
 
-        <div> {/*segunda coluna*/}</div>
+        <div>{/*segunda coluna*/}
+          <ChallengeBox />
+        </div>
       </section>
     </div>
   );

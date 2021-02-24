@@ -55,14 +55,16 @@ export function CountDown() {
         </div>
         <span>:</span>
         <div>
-          <span>{secondsLeft}</span> {/*representa o primeiro digito do segundo*/}
-          <span>{secondsRight}</span> {/*representa o segundo digito do segundo*/}
+          <span>{secondsLeft}</span>
+          {/*representa o primeiro digito do segundo*/}
+          <span>{secondsRight}</span>
+          {/*representa o segundo digito do segundo*/}
         </div>
       </div>
 
       {hasFinished ? (
         <button
-          disabled 
+          disabled
           type="button"
           className={`${styles.countDownButton}`}
           onClick={resetCountDown}
@@ -72,7 +74,7 @@ export function CountDown() {
       ) : (
         <>
           {isActive ? (
-            <button 
+            <button
               type="button"
               className={`${styles.countDownButton} ${styles.countDownButtonActive}`}
             >
