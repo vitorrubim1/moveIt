@@ -1,10 +1,14 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useContext } from "react";
+
+import { ChallengesContext } from "../contexts/ChallengeContext";
 
 import styles from "../styles/components/CountDown.module.css";
 
 let countDownTimeOut: NodeJS.Timeout;
 
 export function CountDown() {
+  const { startNewChallenge } = useContext(ChallengesContext); //contexto
+
   const [time, setTime] = useState(0.1 * 60); //25minutos * 60segundos
   const [isActive, setIsActive] = useState(false); //estado que armazena se o countDown está ativo ou não
   const [hasFinished, setHasFinished] = useState(false); //state pra quando o countDown tiver finalizado
@@ -38,11 +42,12 @@ export function CountDown() {
   useEffect(() => {
     if (isActive && time > 0) {
       countDownTimeOut = setTimeout(() => {
-        setTime(time - 1); //reduz um segundo do tempo
+        setTime(time - 1); //reduz 1s do tempo
       }, 1000); //espera um segundo
     } else if (isActive && time === 0) {
       setHasFinished(true);
       setIsActive(false);
+      startNewChallenge(); //chamo uma função do context pra começar um novo desafio
     }
   }, [isActive, time]);
 
@@ -70,6 +75,7 @@ export function CountDown() {
           onClick={resetCountDown}
         >
           Ciclo encerrado
+          <img src="icons/completed.svg" alt="Icone de conclusão"/>
         </button>
       ) : (
         <>

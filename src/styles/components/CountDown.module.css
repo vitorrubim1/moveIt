@@ -77,10 +77,15 @@
 }
 
 .countDownButton:disabled { /*quando o botão tiver disabled*/
+  border: 1px solid #e6e6e6dc;
   border-bottom: 5px solid var(--green);
+  
   background: var(--white);
   color: var(--text);
 
   cursor: not-allowed;   
+}
 
+.countDownButton:disabled img{
+  margin-left: 12px;
 }
