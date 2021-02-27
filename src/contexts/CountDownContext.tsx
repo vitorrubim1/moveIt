@@ -30,7 +30,7 @@ let countDownTimeOut: NodeJS.Timeout; //pra pausar o setTimeout
 export function CountDownProvider({ children }: CountDownProviderProps) {
   const { startNewChallenge } = useContext(ChallengesContext); //contexto de challenge
 
-  const [time, setTime] = useState(0.1 * 60); //25minutos * 60segundos
+  const [time, setTime] = useState(25 * 60); //25minutos * 60segundos
   const [isActive, setIsActive] = useState(false); //estado que armazena se o countDown está ativo ou não
   const [hasFinished, setHasFinished] = useState(false); //state pra quando o countDown tiver finalizado
 
