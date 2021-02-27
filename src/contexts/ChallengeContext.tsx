@@ -1,4 +1,5 @@
 import { createContext, useState, ReactNode, useEffect } from "react";
+import Cookies from "js-cookie";
 
 import challenges from "../../challenges.json";
 
@@ -37,6 +38,14 @@ export function ChallengesProvider({ children }: ChallengesProviderProps) {
   const [activeChallenge, setActiveChallenge] = useState(null); //challenge que foi sorteado
 
   const experienceToNextLevel = Math.pow((level + 1) * 4, 2); //calculo de potencia pra subir o level
+
+
+  useEffect(() => {
+    //salvando nos cookies
+    Cookies.set('level', String(level)); 
+    Cookies.set('currentExperience', String(currentExperience)); 
+    Cookies.set('challengesCompleted', String(challengesCompleted));
+  }, [level, currentExperience, challengesCompleted]); //oq será observado é oq será gravado nos cookies
 
   useEffect(() => {
     Notification.requestPermission(); //pedindo permissão pra enviar notificação pro usuário
